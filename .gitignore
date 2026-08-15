@@ -1,0 +1,26 @@
+# ===== 原始数据（不入库）=====
+*.csv
+*.zip
+*.xlsx
+*.parquet
+
+# ===== 中间产物 / 缓存 =====
+tmp/
+data_out/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.virtual_documents/
+
+# ===== IDE / 环境 =====
+.idea/
+.vscode/
+anaconda_projects/
+
+# ===== 训练产物 =====
+*.pkl
+models/
+*.joblib
+
+# ===== 预测输出（按需提交时再放开）=====
+submission*.csv
