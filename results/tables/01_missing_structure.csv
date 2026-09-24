@@ -1,0 +1,15 @@
+﻿数据集,字段,缺失数,缺失率(%),总行数
+train,user_id,0,0.0,1648881
+train,merchant_id,0,0.0,1648881
+train,coupon_id,701602,42.55,1648881
+train,discount_rate,701602,42.55,1648881
+train,distance,0,0.0,1648881
+train,date_received,701602,42.55,1648881
+train,date,880114,53.38,1648881
+test,user_id,0,0.0,100669
+test,merchant_id,0,0.0,100669
+test,coupon_id,0,0.0,100669
+test,discount_rate,0,0.0,100669
+test,distance,0,0.0,100669
+test,date_received,0,0.0,100669
+test,date,100669,100.0,100669

@@ -1,0 +1,20 @@
+﻿粒度,特征,业务含义,相对 v1
+事件,discount_rate,折扣率（v1 误删，已恢复）,★ 恢复
+事件,distance,用户到商户距离,保持
+时间,received_weekday,领券是星期几,+ 新增
+时间,received_is_weekend,是否周末领券,+ 新增
+时间,received_day,领券是该月第几天,+ 新增
+用户,user_use_coupon_times,用券消费次数,保持
+用户,user_consume_times,总消费次数,保持
+用户,user_use_coupon_rate,用券/总消费 比率,保持
+用户,user_receive_unused,领了没用的次数,保持
+用户,user_mean_interval,历史核销间隔均值（范围已限制在训练段）,范围修复
+商户,merchant_launch_coupon_used_count,商户券被核销数,保持
+商户,merchant_launch_coupon_used_rate,商户券核销比率,保持
+商户,merchant_launch_coupon_count,商户发券数,保持
+商户,merchant_receive_unused,商户券领而未用数,保持
+商户,merchant_mean_interval,商户券核销间隔均值（范围已限制）,范围修复
+券,coupon_receive_times,券被领取次数,保持
+券,coupon_consume_times,券被核销次数,保持
+券,coupon_fifteen_used,券 15 天内核销数,保持
+券,coupon_used_rate,券核销比率（分母已修复）,★ 修复

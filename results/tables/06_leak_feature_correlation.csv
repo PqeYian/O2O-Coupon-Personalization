@@ -1,0 +1,6 @@
+﻿特征,与 class 相关系数,是否由标签量派生
+user_mean_interval,-0.561,是 (gap 的均值)
+distance,-0.1489,否
+coupon_fifteen_used,0.1215,是 (gap<=15 的计数)
+merchant_mean_interval,-0.1004,是 (gap 的均值)
+coupon_used_rate,0.0516,"是 (退化, 二值指示器)"

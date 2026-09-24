@@ -1,0 +1,7 @@
+﻿排名,特征,XGBoost 重要性,业务解读
+1,user_mean_interval,0.6671,历史核销速度（已限制在训练段范围内，不再是标签泄漏）
+2,user_use_coupon_times,0.0655,用户用券活跃度
+3,user_receive_unused,0.0262,领而不用倾向 —— 这类用户应降低投放权重
+4,coupon_used_rate,0.0248,券的真实核销比率（分母已修复，不再是二值指示器）
+5,distance,0.0184,距离越近越可能核销 —— 投放可优先选择近距离用户，或对远距离用户加大折扣
+6,coupon_receive_times,0.0158,券的受欢迎程度

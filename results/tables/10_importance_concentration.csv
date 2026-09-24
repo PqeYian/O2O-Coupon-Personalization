@@ -1,0 +1,3 @@
+﻿版本,Top1 特征,Top1 占比,CR3 占比
+v1（有泄漏）,user_mean_interval,40.3%,76.9%
+最终版（无泄漏）,user_mean_interval,66.7%,83.3%

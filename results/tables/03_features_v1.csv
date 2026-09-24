@@ -1,0 +1,16 @@
+﻿粒度,特征,业务含义
+事件,distance,用户到商户距离（便利度）
+用户,user_use_coupon_times,用券消费次数（券活跃度）
+用户,user_consume_times,总消费次数（整体活跃度）
+用户,user_use_coupon_rate,用券/总消费 比率（券敏感度）
+用户,user_receive_unused,领了没用的次数（浪费倾向）
+用户,user_mean_interval,历史核销间隔均值 ⚠️ 目标泄漏
+商户,merchant_launch_coupon_used_count,商户券被核销数
+商户,merchant_launch_coupon_used_rate,商户券核销比率
+商户,merchant_launch_coupon_count,商户发券数（发券活跃度）
+商户,merchant_receive_unused,商户券领而未用数
+商户,merchant_mean_interval,商户券核销间隔均值 ⚠️ 目标泄漏
+券,coupon_receive_times,券被领取次数
+券,coupon_consume_times,券被核销次数
+券,coupon_fifteen_used,券 15 天内核销数 ⚠️ 标签聚合
+券,coupon_used_rate,券核销比率 ⚠️ 退化：只有 0/1 两值，等价于指示器

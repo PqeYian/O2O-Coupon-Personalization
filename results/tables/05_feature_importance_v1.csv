@@ -1,0 +1,16 @@
+﻿特征,决策树,XGBoost,决策树排名,XGBoost排名,平均排名
+user_mean_interval,0.920698,0.4026,1,1,1.0
+user_consume_times,0.004113,0.217215,9,2,5.5
+user_use_coupon_rate,0.0,0.149557,14,3,8.5
+user_use_coupon_times,0.010083,0.086119,4,4,4.0
+coupon_used_rate,0.007751,0.052819,7,5,6.0
+user_receive_unused,0.015399,0.024392,2,6,4.0
+coupon_fifteen_used,0.008336,0.01531,6,7,6.5
+coupon_receive_times,0.01184,0.011624,3,8,5.5
+merchant_mean_interval,0.008512,0.010041,5,9,7.0
+coupon_consume_times,0.003858,0.00871,10,10,10.0
+merchant_receive_unused,0.002544,0.007623,11,11,11.0
+distance,0.005351,0.007052,8,12,10.0
+merchant_launch_coupon_used_count,0.000944,0.003635,12,13,12.5
+merchant_launch_coupon_count,0.00057,0.003304,13,14,13.5
+merchant_launch_coupon_used_rate,0.0,0.0,14,15,14.5
