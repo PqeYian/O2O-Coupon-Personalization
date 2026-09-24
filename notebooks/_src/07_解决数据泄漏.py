@@ -174,14 +174,41 @@ for seg in (train_seg, val_seg, test_seg):
     seg['distance'] = seg['distance'].fillna(train_seg['distance'].median())
 
 # %%
-print('冷启动统计（验证段/测试段中，训练段从未出现过的主体 -> 画像特征为 0）：')
-for name, seg in [('验证段 6 月', val_seg), ('测试段 7 月', test_seg)]:
-    cold_u = seg['user_mean_interval'].eq(0).sum() / len(seg) * 100
-    cold_m = seg['merchant_mean_interval'].eq(0).sum() / len(seg) * 100
-    cold_c = seg['coupon_fifteen_used'].eq(0).sum() / len(seg) * 100
-    print(f'  {name}: 用户冷启动 {cold_u:5.1f}%   商户冷启动 {cold_m:5.1f}%   券冷启动 {cold_c:5.1f}%')
+# ⚠️ 这里【不能】用「画像特征 == 0」来判冷启动。
+#
+# 曾经的写法是 cold_c = (seg['coupon_fifteen_used'] == 0).mean()，
+# 它把测试段券冷启动算成 91.3%。但这个量测的不是「训练段没见过这张券」，
+# 而是「这张券在训练段没有 15 天内核销的记录」——
+# 一张在训练段出现几百次、只是从未在 15 天内被核销的券，值同样为 0。
+# 用户的 user_mean_interval == 0 也同理（当天领当天用的用户，均值本就是 0）。
+#
+# 正确做法：直接做集合运算，看 coupon_id / user_id / merchant_id
+# 是否真的出现在训练段里。
+print('冷启动统计（验证段/测试段中，训练段从未出现过的主体）：')
 print()
-print('=> 这是真实场景的样子：新用户/新券必然存在，模型必须靠事件本身的信息兜底。')
+
+cold_rows = []
+for name, seg in [('验证段 6 月', val_seg), ('测试段 7 月', test_seg)]:
+    for col, label in [('user_id', '用户'), ('merchant_id', '商户'), ('coupon_id', '券')]:
+        seen = set(train_seg[col])                      # 训练段见过的主体
+        uniq = seg[col].drop_duplicates()               # 该段出现过的唯一主体
+        cold_rows.append({
+            '集合': name, '实体': label,
+            '按行(预测请求)': f'{(~seg[col].isin(seen)).mean() * 100:.1f}%',
+            '按唯一值': f'{(~uniq.isin(seen)).mean() * 100:.1f}%',
+            '该段唯一值数': f'{len(uniq):,}',
+        })
+
+cold = pd.DataFrame(cold_rows)
+cold.to_csv(TAB_DIR / '07_cold_start.csv', index=False, encoding='utf-8-sig')
+print(cold.to_string(index=False))
+print()
+print('两种口径都列出，因为它们回答的是不同的问题：')
+print('  · 按行   —— 有多大比例的【预测请求】落在一个全新主体上（业务投放视角）')
+print('  · 按唯一值 —— 有多大比例的【主体】是全新的（覆盖率视角）')
+print()
+print('=> 新用户/新券必然存在，这些主体的画像特征全为 0，')
+print('   模型只能靠事件本身的信息（距离等）兜底。')
 
 # %% [markdown]
 # ## 3. 在训练段上训练，在验证段上诚实评估
