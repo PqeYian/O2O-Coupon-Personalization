@@ -1,0 +1,4 @@
+﻿轮次,19特征 AUC,distance单特征 AUC
+train<=3→eval5,0.495,0.6139
+train<=4→eval6,0.5062,0.5981
+train<=5→eval6,0.6227,0.598
