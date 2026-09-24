@@ -1,5 +1,5 @@
 # ===== 原始数据（不入库）=====
-*.csv
+data/*.csv
 *.zip
 *.xlsx
 *.parquet
@@ -11,6 +11,7 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 .virtual_documents/
+notebooks/_src/__pycache__/
 
 # ===== IDE / 环境 =====
 .idea/
@@ -24,3 +25,6 @@ models/
 
 # ===== 预测输出（按需提交时再放开）=====
 submission*.csv
+
+# 说明: results/tables/*.csv 是实验结论表, 需要入库供 README 引用,
+# 因此原始数据只精确忽略 data/*.csv, 不用全局 *.csv
